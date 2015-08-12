@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>i18n/comtool_zh_CN.qm</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/SettingsForm.qml</file>
+        <file>qml/SettingsDialog.qml</file>
+        <file>qml/SettingsDialog2.qml</file>
+    </qresource>
+</RCC>
