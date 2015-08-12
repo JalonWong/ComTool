@@ -22,13 +22,6 @@ Window {
     onVisibleChanged: {
         if(visible){
             serialPort.getPortsInfo()
-//            console.log("count", serialPort.portsMap.count())
-//            console.log("[]", serialPort.portsMap["text"]);
-//            portCombo.model = serialPort.portsMap.keys();
-//            var tmp = SerialPort.Baud1200
-//            console.log("enum", tmp)
-//            serialPort.map.insert("data", "dd1")
-//            console.log("map", serialPort.map2.value("data"))
         }
     }
 
@@ -188,11 +181,6 @@ Window {
 
             onClicked: {
                 root.apply()
-//                console.log("Qlist hello:" + serialPort.test.count())
-//                for (var i=0; i<serialPort.test.length; i++)
-//                    console.log("Array item:", serialPort.test[i])
-//                hhh = serialPort.getTest1()
-//                console.log("Baud:", baudRateCombo.values[1])
                 settingsMap.valuesToSettings()
                 root.close()
             }
