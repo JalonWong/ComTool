@@ -20,18 +20,6 @@ ApplicationWindow {
 
     menuBar: MenuBar {
         Menu {
-//            title: qsTr("&File")
-//            MenuItem {
-//                text: qsTr("&Open")
-////                onTriggered: serialPort.start();
-////                onTriggered: messageDialog.show(qsTr("Open action triggered"));
-//            }
-            MenuItem {
-                text: qsTr("E&xit")
-                onTriggered: Qt.quit();
-            }
-        }
-        Menu {
             title: qsTr("&Calls")
             MenuItem { action: connectAction }
             MenuItem { action: settingsAction }
@@ -41,8 +29,20 @@ ApplicationWindow {
             MenuItem {
                 id: menuSend
                 text: qsTr("&Send Data")
-                onTriggered: sendData()
+                onTriggered: buttonSend.clicked()
                 enabled: serialPort.isOpen
+            }
+            MenuItem {
+                id: menuClearSend
+                text: qsTr("&Clear Send Data")
+                onTriggered: buttonClean.clicked()
+                enabled: textSend.length > 0
+            }
+            MenuItem {
+                id: menuClearRecv
+                text: qsTr("Clear &Recv Data")
+                onTriggered: textRecv.clear()
+                enabled: textRecv.length > 0
             }
         }
     }
@@ -62,16 +62,16 @@ ApplicationWindow {
     // Action
     Action {
         id: connectAction
-        text: qsTr("Connect")
+        text: qsTr("&Connect")
         iconSource: "qrc:/images/disconnect.png"
         checkable: true
         property bool isOpen: serialPort.isOpen
         onIsOpenChanged: {
             if(isOpen) {
-                text = qsTr("Disconnect")
+                text = qsTr("&Disconnect")
                 iconSource = "qrc:/images/connect.png"
             } else {
-                text = qsTr("Connect")
+                text = qsTr("&Connect")
                 iconSource = "qrc:/images/disconnect.png"
             }
         }
@@ -88,7 +88,7 @@ ApplicationWindow {
 
     Action {
         id: settingsAction
-        text: qsTr("Settings")
+        text: qsTr("&Settings")
         iconSource: "qrc:/images/settings.png"
         onTriggered: settingsDialg.show()
     }
@@ -105,6 +105,9 @@ ApplicationWindow {
             anchors.right: parent.right
             anchors.left: parent.left
             readOnly: true
+            function clear() {
+                remove(0,length)
+            }
         }
 
         TextArea {
@@ -113,6 +116,9 @@ ApplicationWindow {
             anchors.right: parent.right
             anchors.left: parent.left
             textFormat: Text.AutoText
+            function clear() {
+                remove(0,length)
+            }
         }
 
         RowLayout {
@@ -124,13 +130,15 @@ ApplicationWindow {
 
             Button {
                 id: buttonClean
-                text: qsTr("Clean")
+                text: qsTr("Clear")
+                onClicked: textSend.clear()
+                enabled: textSend.length > 0
             }
 
             Button {
                 id: buttonSend
                 text: qsTr("Send")
-                onClicked: sendData()
+                onClicked: serialPort.writeData(main.getSendData());
                 enabled: serialPort.isOpen
             }
         }

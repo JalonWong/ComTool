@@ -10,7 +10,7 @@ Window {
     title: qsTr("Settings")
     flags: Qt.Dialog
     modality: Qt.WindowModal
-    width: 300
+    width: form.width + 40
     height: 300
     maximumWidth: width
     minimumWidth: width
@@ -105,7 +105,7 @@ Window {
                 Text {
                     id: portDesc
                     width: parent.width
-                    text: "Description: " + description
+                    text: qsTr("Description:") + description
                     property string description: "N/A"
                     wrapMode: Text.WordWrap
                 }

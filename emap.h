@@ -18,8 +18,6 @@ public:
     Q_INVOKABLE QStringList keys() const;
     Q_INVOKABLE QVariantList values() const;
 
-//    Q_INVOKABLE QVariant operator[](const QString &key) const {return value(key);}
-
 signals:
 
 public slots:

@@ -5,8 +5,6 @@ QT += serialport
 
 SOURCES += main.cpp \
     serialporthandler.cpp \
-    portsdata.cpp \
-    listmodel.cpp \
     emap.cpp
 
 RESOURCES += qml.qrc \
@@ -21,8 +19,6 @@ include(deployment.pri)
 
 HEADERS += \
     serialporthandler.h \
-    portsdata.h \
-    listmodel.h \
     emap.h
 
 lupdate_only{
