@@ -20,6 +20,12 @@ ApplicationWindow {
 
     menuBar: MenuBar {
         Menu {
+//            title: qsTr("&File")
+//            MenuItem {
+//                text: qsTr("&Open")
+////                onTriggered: serialPort.start();
+////                onTriggered: messageDialog.show(qsTr("Open action triggered"));
+//            }
             MenuItem {
                 text: qsTr("E&xit")
                 onTriggered: Qt.quit();
